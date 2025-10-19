@@ -1,0 +1,29 @@
+version: '3.9'
+services:
+mariadb:
+image: mariadb:10.11
+environment:
+MARIADB_DATABASE: libr
+MARIADB_USER: libr
+MARIADB_PASSWORD: libr
+MARIADB_ROOT_PASSWORD: root
+ports: ["3307:3306"]
+volumes:
+- dbdata:/var/lib/mysql
+php:
+build: ./docker/php
+volumes:
+- ./:/app
+depends_on: [mariadb]
+environment:
+APP_ENV: dev
+DATABASE_URL: 'mysql://libr:libr@mariadb:3306/libr?serverVersion=mariadb-10.11'
+nginx:
+image: nginx:1.27-alpine
+volumes:
+- ./:/app
+- ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+ports: ["8080:80"]
+depends_on: [php]
+volumes:
+dbdata:

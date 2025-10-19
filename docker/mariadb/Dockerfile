@@ -1,0 +1,2 @@
+FROM mariadb:11
+ENV MYSQL_DATABASE=librairy MYSQL_USER=librairy MYSQL_PASSWORD=librairy MYSQL_ROOT_PASSWORD=root

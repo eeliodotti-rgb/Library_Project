@@ -1,0 +1,3 @@
+api_lending:
+resource: '../../src/UI/Controller/'
+type: attribute

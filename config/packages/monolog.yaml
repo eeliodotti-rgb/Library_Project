@@ -1,0 +1,13 @@
+monolog:
+channels: ['domain']
+handlers:
+main:
+type: stream
+path: 'php://stdout'
+level: info
+formatter: monolog.formatter.json
+domain:
+type: stream
+path: 'php://stdout'
+level: info
+formatter: monolog.formatter.json

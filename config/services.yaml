@@ -1,0 +1,21 @@
+services:
+_defaults:
+autowire: true
+autoconfigure: true
+
+
+App\Infrastructure\Time\Clock: ~
+App\Infrastructure\Logging\StructuredLogger: ~
+
+
+# Application use cases
+App\Application\UseCase\: { resource: '../src/Application/UseCase', public: true }
+
+
+# Doctrine repositories bound to ports
+App\Domain\Ports\BookRepository: '@App\\Infrastructure\\Doctrine\\DoctrineRepositories'
+App\Domain\Ports\CopyRepository: '@App\\Infrastructure\\Doctrine\\DoctrineRepositories'
+App\Domain\Ports\LoanRepository: '@App\\Infrastructure\\Doctrine\\DoctrineRepositories'
+App\Domain\Ports\MemberRepository: '@App\\Infrastructure\\Doctrine\\DoctrineRepositories'
+App\Domain\Ports\ReservationRepository: '@App\\Infrastructure\\Doctrine\\DoctrineRepositories'
+App\Domain\Ports\FinePaymentRepository: '@App\\Infrastructure\\Doctrine\\DoctrineRepositories'
